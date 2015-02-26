@@ -33,13 +33,12 @@ module.exports.getDeals = function($top, $skip, callback){
 
 module.exports.upadteItems = function(){
 	console.log("Mise à jour des items");
-	var dateDernierDeal = items[0].published_at;
 
 	parser.parseURL(urlNews, {}, function(err, out){
 		if(!out)
 			return;
 		out.items.every(function(element, index, array){
-			if(element.published_at <= dateDernierDeal){
+			if(element.published_at <= items[0].published_at){
 				console.log(index + " nouveau(x) élement(s)");
 				return false;
 			}
