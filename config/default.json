@@ -1,0 +1,8 @@
+{
+	"dealabs" : {
+		"urls" : {
+			"news" : "http://www.dealabs.com/rss/new.xml",
+			"hot" : "http://www.dealabs.com/rss/hot.xml"
+		}
+	}
+}

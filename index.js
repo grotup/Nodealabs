@@ -1,6 +1,6 @@
-var parser = require('rssparser');
 var express = require('express')
 var Dealabs = require('./Dealabs.js');
+
 
 var app = express();
 
@@ -10,7 +10,10 @@ app.use(function(req, res, next) {
   next();
 });
 
-Dealabs.loadDeals();
+Dealabs.loadDeals(function(){
+  console.log("Lancement du worker");
+  setInterval(Dealabs.upadteItems, 30000);
+});
 
 app.get('/deals', function(req, res, next){
   console.log('GET sur /deals');
