@@ -9,8 +9,10 @@ var urlHots = dealabsConfig.hot;
 var items = [];
 
 module.exports.loadDeals = function loadDeals(callback){
-	console.log("Chargement des deals...");
 	parser.parseURL(urlNews, {}, function(err, out){
+		if(err)
+			console.log(err);
+
 		items = out.items;
 		logNbDeals();
 		callback();
@@ -19,10 +21,13 @@ module.exports.loadDeals = function loadDeals(callback){
 
 module.exports.getDeals = function($top, $skip, callback){
 	var ret = [];
-	if(!$skip && !$top)
-    	ret = items;
-  	else
-  		ret = items.slice($skip, $skip+$top)
+
+	if(!$skip)
+		$skip = 0;
+	if(!$top)
+		$top = items.length;
+
+	ret = items.slice($skip, $skip+$top)
   	callback(ret);
 }
 
