@@ -31,7 +31,7 @@ module.exports.getDeals = function($top, $skip, callback){
   	callback(ret);
 }
 
-module.exports.upadteItems = function(){
+module.exports.updateItems = function(){
 	console.log("Mise à jour des items");
 
 	parser.parseURL(urlNews, {}, function(err, out){

@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
 
 Dealabs.loadDeals(function(){
   console.log("Lancement du worker");
-  setInterval(Dealabs.upadteItems, 30000);
+  setInterval(Dealabs.updateItems, 30000);
 });
 
 app.get('/deals', function(req, res, next){
