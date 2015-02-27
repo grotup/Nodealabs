@@ -5,6 +5,7 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 	$scope.top = 10;
 	$scope.skip = 0;
 	$scope.deals= [];
+	$scope.typeFlux = "news";
 
 	updateDeals = function(){
 		DealsService.getDeals($scope.top, $scope.skip, function(data){
@@ -24,6 +25,7 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 
 	$scope.previousPage = function(){
 		$scope.skip = $scope.skip-10;
+		if($scope.skip <= 0) $scope.skip=0;
 		updateDeals();
 	};
 
@@ -31,6 +33,13 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 		$scope.top = nb;
 		updateDeals();
 	};
+
+	$scope.changeTypeDeal = function(type){
+		if(!type || (type != 'news' && type != 'hot'))
+			return
+
+		$scope.typeFlux = type;
+	}
 
 	updateDeals();
 }]);
