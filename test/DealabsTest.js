@@ -13,7 +13,6 @@ module.exports = {
 	DealabsGetDeals : function(test){
 		Dealabs.loadDeals(function(data){
 			Dealabs.getDeals(undefined, undefined, function(data){
-				console.log("test");
 				test.ok(data.length===2, "DealabsGetDeals - Nombre d'items OK");
 				test.done();
 			});	
@@ -23,7 +22,6 @@ module.exports = {
 	DealabsGetDealsSkipTop : function(test){
 		Dealabs.loadDeals(function(data){
 			Dealabs.getDeals(1, 0, function(data){
-				console.log("test");
 				test.ok(data.length===1);
 				test.done();
 			});
