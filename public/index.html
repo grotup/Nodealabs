@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+  <html ng-app="Dealabs">
+    <head>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="bower_components/materialize/dist/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    </head>
+
+    <body class="indigo lighten-5">
+    	<nav class="light-blue lighten-1" role="navigation">
+	    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+	      <ul class="right">
+	        <li><a href="#">Navbar Link</a></li>
+	      </ul>
+	      <ul id="nav-mobile" class="side-nav">
+	        <li><a href="#">Navbar Link</a></li>
+	      </ul>
+	      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+	    </div>
+	  </nav>
+	  <div class="row">
+		<div class="col s9 offset-s1">
+		  	<div ng-controller="DealsController">
+		  		<ul class="collection">
+		  			<li ng-repeat="deal in deals" class="collection-item avatar">
+		  				<span class="title">{{deal.title}}</span>
+		  				<a href="{{deal.url}}" class="secondary-content"><i class="mdi-communication-call-made"></i></a>
+		  			</li>
+		  		</ul>
+	      	</div>
+	      </div>
+	      </div>
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
+      <script src="bower_components/angular/angular.js"></script>
+
+      <script src="js/app.js"></script>
+    </body>
+  </html>
