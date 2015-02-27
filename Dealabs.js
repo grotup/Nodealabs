@@ -25,7 +25,7 @@ module.exports.getDeals = function($top, $skip, callback){
 	if(!$skip)
 		$skip = 0;
 	if(!$top)
-		$top = items.length;
+		$top = 10;
 
 	ret = items.slice($skip, $skip+$top)
   	callback(ret);
