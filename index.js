@@ -20,6 +20,7 @@ Dealabs.loadDeals(function(){
 app.get('/deals', function(req, res, next){
   console.log('GET sur /deals');
   Dealabs.getDeals(req.query.$top, req.query.$skip, function(data){
+    console.log('Renvoi de ' + data.length + ' deals');
     res.send(data);
   });
 });

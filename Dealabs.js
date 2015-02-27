@@ -20,15 +20,14 @@ module.exports.loadDeals = function loadDeals(callback){
 };
 
 module.exports.getDeals = function($top, $skip, callback){
-	var ret = [];
-
 	if(!$skip)
 		$skip = 0;
 	if(!$top)
 		$top = 10;
 
-	ret = items.slice($skip, $skip+$top)
-  	callback(ret);
+	var sliceValue = parseInt($skip)+parseInt($top);
+
+  	callback(items.slice($skip,sliceValue));
 }
 
 module.exports.updateItems = function(){
