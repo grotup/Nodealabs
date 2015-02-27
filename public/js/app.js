@@ -5,10 +5,8 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 
 		$scope.deals = data;
 		$scope.deals.forEach(function(element, index, array){
-			console.log(element.published_at);
 			var date = new Date();
         	date.setTime(element.published_at);
-        	console.log(date);
 			element.date = date;
 		});
 	})
