@@ -14,7 +14,7 @@
 			<nav class="light-blue lighten-1" role="navigation">
 				<ul id="nav-mobile" class="right">
 					<li ng-class="{active : typeFlux == 'news'}" ><a ng-click="changeTypeDeal('news')" href="#">Nouveaux</a></li>
-					<li ng-class="{active : typeFlux == 'hot' }" ><a ng-click="changeTypeDeal('hot')" href="#">Hots</a></li>
+					<li ng-class="{active : typeFlux == 'hots' }" ><a ng-click="changeTypeDeal('hots')" href="#">Hots</a></li>
 	      		</ul>
 			    <div class="nav-wrapper container">
 		    		<form class="center">
@@ -28,31 +28,27 @@
 		  </div>
 		  <div class="container">
 				<div class="row">
-					<a ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()">Précédent</a>
-					<a ng-click="changeNbDeals(10)" ng-class="{disabled:top==10}" class="waves-effect waves-light btn center col s1 offset-s2">10</a>
-					<a ng-click="changeNbDeals(20)" ng-class="{disabled:top==20}" class="waves-effect waves-light btn center col s1">20</a>
-					<a ng-click="changeNbDeals(50)" ng-class="{disabled:top==50}" class="waves-effect waves-light btn center col s1">50</a>
-					<a ng-click="changeNbDeals(100)" ng-class="{disabled:top==100}" class="waves-effect waves-light btn center col s1">100</a>
-					<a class="waves-effect waves-light btn right"  ng-click="nextPage()">Suivant</a>	
+					<a ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()"><i class="mdi-av-skip-previous"></i></a>
+					<a class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>	
 		  		</div>
 		  		<div class="row">
 					<ul class="collection with-header">
 						<li class="collection-header"><h4>Deals</h4></li>
 			  			<li ng-repeat="deal in deals | filter:search" class="collection-item avatar" >
-			  				<span class="title">{{deal.title}}</span>
+			  				<span class="title"><a href="{{deal.url}}" target="_blank">{{deal.title}}</a></span>
 			  				<a href="{{deal.url}}" class="secondary-content" target="_blank"><i class="mdi-communication-call-made"></i></a>
 			  			</li>
 			  		</ul>
 		  		</div>
 		  		<div class="row">
-			  		<a ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()">Précédent</a>
-			  		<a class="waves-effect waves-light btn right"  ng-click="nextPage()">Suivant</a>
+			  		<a href="#" ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()"><i class="mdi-av-skip-previous"></i></a>
+			  		<a href="#" class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>
 		  		</div>
 	      	</div>
 
 
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+      <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
       <script type="text/javascript" src="bower_components/materialize/dist/js/materialize.min.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="js/app.js"></script>

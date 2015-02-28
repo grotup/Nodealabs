@@ -8,7 +8,7 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 	$scope.typeFlux = "news";
 
 	updateDeals = function(){
-		DealsService.getDeals($scope.top, $scope.skip, function(data){
+		DealsService.getDeals($scope.typeFlux, $scope.top, $scope.skip, function(data){
 			$scope.deals = data;
 			$scope.deals.forEach(function(element, index, array){
 				var date = new Date();
@@ -35,10 +35,12 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 	};
 
 	$scope.changeTypeDeal = function(type){
-		if(!type || (type != 'news' && type != 'hot'))
+		if(!type || (type != 'news' && type != 'hots'))
 			return
 
 		$scope.typeFlux = type;
+
+		updateDeals();
 	}
 
 	updateDeals();
@@ -46,8 +48,8 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 
 module.service('DealsService', ['$http', function($http){
 
-	this.getDeals = function(top, skip, callback){
-		$http.get('/deals?$top='+top+'&$skip='+skip).success(function(data, status, headers, config){
+	this.getDeals = function(type, top, skip, callback){
+		$http.get('/deals/'+type+'?$top='+top+'&$skip='+skip).success(function(data, status, headers, config){
           callback(data);
         })
 	};
