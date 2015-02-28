@@ -1,6 +1,9 @@
 var parser = require('rssparser');
 var config = require('config');
 var async = require('async');
+var request = require('request');
+var xpath = require('xpath')
+var dom = require('xmldom-silent').DOMParser
 
 var dealabsConfig = config.get('dealabs.urls');
 
@@ -11,7 +14,6 @@ var itemsHot = [];
 var itemsNews = [];
 
 module.exports.getDeals = function(type, $top, $skip, callback){
-
 	if(!$skip)
 		$skip = 0;
 	if(!$top)
@@ -33,25 +35,48 @@ module.exports.updateItems = function(callback){
 		function(waterFallDone){
 			console.log("Update nouveaux deals");
 			loadDeals(urlNews, function(items){
-				itemsNews = items;
+				itemsNews = items.slice(0, 50);
+				items = [];
 				waterFallDone();
 			});
 		},
 		function(waterFallDone){
 			console.log("Update deals chauds");
 			loadDeals(urlHots, function(items){
-				itemsHot = items;
+				itemsHot = items.slice(0, 50);
+				items = [];
 				waterFallDone();
 			});
 		}
 	],
 	function(err, responses){
 		console.log("Mise à jour des items terminée");
-		if(callback){
-
-			callback();
-		}
-			
+		async.parallel([
+			function(waterFallDone){
+				itemsNews.forEach(function(element, index, array){
+					if(!element.properties){
+						getDealInfo(element, function(data){
+							element.properties = data;
+						});		
+					}
+				});
+				waterFallDone();
+			},
+			function(waterFallDone){
+				itemsHot.forEach(function(element, index, array){
+					if(!element.properties){
+						getDealInfo(element, function(data){
+							element.properties = data;
+							if(index > 50){
+								return false;	
+							}
+						});
+					}
+				});
+				waterFallDone();
+			}
+		]);
+				
 	});
 };
 
@@ -64,6 +89,19 @@ loadDeals = function (url, callback){
 	});
 }
 
-module.exports.getDealInfo = function(url, callback){
-	callback(undefined);
+getDealInfo = function(element, callback){
+	var ret = {};
+	try{
+		var doc = new dom().parseFromString(element.summary)		
+		ret.image = parserImage(doc);
+	}catch(exception){
+		console.log(exception);
+	}finally{
+		callback(ret);	
+	}
+};
+
+parserImage = function(doc){
+	var element = xpath.select("//img", doc);
+	return element[0].attributes[1].nodeValue;
 };

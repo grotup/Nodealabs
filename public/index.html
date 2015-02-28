@@ -29,20 +29,22 @@
 		  <div class="container">
 				<div class="row">
 					<a ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()"><i class="mdi-av-skip-previous"></i></a>
-					<a class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>	
+					<a ng-class="{disabled : skip >=40}" class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>	
 		  		</div>
 		  		<div class="row">
-					<ul class="collection with-header">
-						<li class="collection-header"><h4>Deals</h4></li>
+		  			<h4>Deals</h4>
+					<ul class="collection">
 			  			<li ng-repeat="deal in deals | filter:search" class="collection-item avatar" >
-			  				<span class="title"><a href="{{deal.url}}" target="_blank">{{deal.title}}</a></span>
-			  				<a href="{{deal.url}}" class="secondary-content" target="_blank"><i class="mdi-communication-call-made"></i></a>
+			  				<img src="{{deal.properties.image}}" class="circle">
+			  				<span class="title">{{deal.title}}</span>
+			  				<p>{{deal.properties.degre}}</p>
+			  				<a href="{{deal.url}}" class="secondary-content" target="_blank"><i class="mdi-communication-call-made small"></i></a>
 			  			</li>
 			  		</ul>
 		  		</div>
 		  		<div class="row">
 			  		<a href="#" ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()"><i class="mdi-av-skip-previous"></i></a>
-			  		<a href="#" class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>
+			  		<a href="#" ng-class="{disabled : skip >=40}" class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>
 		  		</div>
 	      	</div>
 

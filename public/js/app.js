@@ -1,6 +1,6 @@
 var module = angular.module('Dealabs', []);
 
-module.controller('DealsController',['$scope', 'DealsService', function($scope,DealsService){
+module.controller('DealsController',['$scope', 'DealsService', '$interval', function($scope,DealsService,$interval){
 	$scope.nbDealsPage = [10, 20, 50, 100];
 	$scope.top = 10;
 	$scope.skip = 0;
@@ -16,11 +16,14 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 				element.date = date;
 			});
 		});
-	}
+	};
 
 	$scope.nextPage = function(){
-		$scope.skip = $scope.skip+10;
-		updateDeals();
+		if($scope.skip < 40){
+			$scope.skip = $scope.skip+10;
+
+			updateDeals();
+		}
 	};
 
 	$scope.previousPage = function(){
@@ -38,10 +41,11 @@ module.controller('DealsController',['$scope', 'DealsService', function($scope,D
 		if(!type || (type != 'news' && type != 'hots'))
 			return
 
+		$scope.skip = 0;
 		$scope.typeFlux = type;
 
 		updateDeals();
-	}
+	};
 
 	updateDeals();
 }]);

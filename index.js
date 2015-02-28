@@ -3,6 +3,7 @@ var Dealabs = require('./Dealabs.js');
 var path = require('path');
 var async = require('async');
 
+
 var app = express();
 
 app.use(function(req, res, next) {
@@ -16,7 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 console.log("Chargement des deals ...");
 
 Dealabs.updateItems();
-setInterval(Dealabs.updateItems, 30000);
+setInterval(Dealabs.updateItems, 120000);
 
 app.get('/deals/:type', function(req, res, next){
   console.log('GET sur /deals/' + req.params.type);
