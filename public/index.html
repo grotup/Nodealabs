@@ -40,7 +40,7 @@
 		  			<h4>Deals</h4>
 					<ul class="collection">
 			  			<li ng-repeat="deal in deals | filter:search" class="collection-item avatar" >
-			  				<img src="{{deal.properties.image}}" class="circle">
+			  				<img ng-src="{{deal.properties.image}}" class="circle">
 			  				<span class="title">{{deal.title}}</span>
 			  				<p>{{deal.properties.degre}}</p>
 			  				<a href="{{deal.url}}" class="secondary-content" target="_blank"><i class="mdi-communication-call-made small"></i></a>
