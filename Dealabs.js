@@ -35,7 +35,7 @@ module.exports.updateItems = function(callback){
 		function(waterFallDone){
 			console.log("Update nouveaux deals");
 			loadDeals(urlNews, function(items){
-				itemsNews = items.slice(0, 50);
+				itemsNews = items.slice(0, 500);
 				items = [];
 				waterFallDone();
 			});
@@ -43,7 +43,7 @@ module.exports.updateItems = function(callback){
 		function(waterFallDone){
 			console.log("Update deals chauds");
 			loadDeals(urlHots, function(items){
-				itemsHot = items.slice(0, 50);
+				itemsHot = items.slice(0, 500);
 				items = [];
 				waterFallDone();
 			});
