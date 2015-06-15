@@ -39,7 +39,7 @@ module.controller('DealsController',['$scope', 'DealsService', '$interval', func
 
 	$scope.changeTypeDeal = function(type){
 		if(!type || (type != 'news' && type != 'hots'))
-			return
+			return;
 
 		$scope.skip = 0;
 		$scope.typeFlux = type;

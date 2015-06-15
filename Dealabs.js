@@ -2,8 +2,8 @@ var parser = require('rssparser');
 var config = require('config');
 var async = require('async');
 var request = require('request');
-var xpath = require('xpath')
-var dom = require('xmldom-silent').DOMParser
+var xpath = require('xpath');
+var dom = require('xmldom-silent').DOMParser;
 
 var dealabsConfig = config.get('dealabs.urls');
 
@@ -26,7 +26,7 @@ module.exports.getDeals = function(type, $top, $skip, callback){
 		items = itemsHot;
 
   	callback(items.slice($skip,sliceValue));
-}
+};
 
 module.exports.updateItems = function(callback){
 	console.log("Mise à jour des items");
@@ -87,12 +87,12 @@ loadDeals = function (url, callback){
 		var items = out.items;
 		callback(items);
 	});
-}
+};
 
 getDealInfo = function(element, callback){
 	var ret = {};
 	try{
-		var doc = new dom().parseFromString(element.summary)		
+		var doc = new dom().parseFromString(element.summary);
 		ret.image = parserImage(doc);
 	}catch(exception){
 		console.log(exception);
