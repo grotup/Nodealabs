@@ -6,6 +6,10 @@ module.controller('DealsController',['$scope', 'DealsService', '$interval', func
 	$scope.skip = 0;
 	$scope.deals= [];
 	$scope.typeFlux = "news";
+	$scope.canNext = $scope.top + $scope.skip < 500;
+	$scope.canPrevious = $scope.skip > 0;
+
+	
 
 	updateDeals = function(){
 		DealsService.getDeals($scope.typeFlux, $scope.top, $scope.skip, function(data){
@@ -19,9 +23,8 @@ module.controller('DealsController',['$scope', 'DealsService', '$interval', func
 	};
 
 	$scope.nextPage = function(){
-		if($scope.skip < 40){
+		if($scope.top + $scope.skip < 500){
 			$scope.skip = $scope.skip+10;
-
 			updateDeals();
 		}
 	};

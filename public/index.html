@@ -28,13 +28,13 @@
 		  </div>
 		  <div class="container">
 				<div class="row">
-					<a ng-class="{disabled : skip==0}" class="waves-effect waves-light btn left" ng-click="previousPage()"><i class="mdi-av-skip-previous"></i></a>
+					<a ng-class="{disabled : !canPrevious}" class="waves-effect waves-light btn left" ng-click="previousPage()"><i class="mdi-av-skip-previous"></i></a>
 					<a ng-click="changeNbDeals(10)" ng-class="{disabled:top==10}" class="waves-effect waves-light btn center col s1 offset-s2">10</a>
 					<a ng-click="changeNbDeals(20)" ng-class="{disabled:top==20}" class="waves-effect waves-light btn center col s1">20</a>		
 					<a ng-click="changeNbDeals(50)" ng-class="{disabled:top==50}" class="waves-effect waves-light btn center col s1">50</a>		
 					<a ng-click="changeNbDeals(100)" ng-class="{disabled:top==100}" class="waves-effect waves-light btn center col s1">100</a>
 					<a ng-click="changeNbDeals(500)" ng-class="{disabled:top==500}" class="waves-effect waves-light btn center col s1">500</a>
-					<a ng-class="{disabled : skip >=40}" class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>	
+					<a ng-class="{disabled : !canNext}" class="waves-effect waves-light btn right"  ng-click="nextPage()"><i class="mdi-av-skip-next"></i></a>	
 		  		</div>
 		  		<div class="row">
 		  			<h4>Deals</h4>
