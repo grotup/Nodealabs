@@ -1,13 +1,14 @@
 # Nodealabs
 
 ## Installation & Run
+```
+npm install
 
-> npm install
+cd public
 
-> cd public
+bower install
 
-> bower install
+node index.js
 
-> node index.js
-
-> http://localhost:3000
+http://localhost:3000
+```
